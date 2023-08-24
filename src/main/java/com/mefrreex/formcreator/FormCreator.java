@@ -1,13 +1,13 @@
 package com.mefrreex.formcreator;
 
 import cn.nukkit.plugin.PluginBase;
-
-import java.io.File;
-import java.io.IOException;
-
 import com.mefrreex.formcreator.command.FormCreatorCommand;
 import com.mefrreex.formcreator.form.FormManager;
 import com.mefrreex.formcreator.form.action.executor.ExecutorManager;
+import com.mefrreex.formcreator.utils.Language;
+
+import java.io.File;
+import java.io.IOException;
 
 public class FormCreator extends PluginBase {
     
@@ -16,15 +16,17 @@ public class FormCreator extends PluginBase {
     @Override
     public void onLoad() {
         FormCreator.instance = this;
+        this.saveDefaultConfig();
         this.saveResource("forms.yml");
         this.setup();
     }
 
     @Override
     public void onEnable() {
-        this.getServer().getCommandMap().register("FormCreator", new FormCreatorCommand());
+        Language.init(this);
         ExecutorManager.init();
         FormManager.loadAll();
+        FormCreatorCommand.register();
     }
 
     private void setup() {
@@ -39,6 +41,7 @@ public class FormCreator extends PluginBase {
         }
     }
 
+    /** Instance */
     public static FormCreator get() {
         return instance;
     }

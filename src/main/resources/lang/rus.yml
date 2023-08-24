@@ -1,0 +1,5 @@
+command-player-not-found: "Игрок не найден!"
+command-help-available: "Доступные команды:"
+command-help-format: "- /[0] [1] - [2]"
+
+command-open-opened: "Вы открыли форму [0] для игрока [1]."

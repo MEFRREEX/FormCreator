@@ -11,17 +11,16 @@ import lombok.ToString;
 
 import java.util.Map;
 
-
 @Getter @Setter
 @ToString
 public class Action {
     
     @SerializedName("type") private String type;
-    @SerializedName("data") private String data;
+    @SerializedName("value") private String value;
 
     public Action(String type, String data) {
         this.type = type;
-        this.data = data;
+        this.value = data;
     }
 
     public String getType() {
@@ -33,7 +32,7 @@ public class Action {
         if (executor == null) {
             throw new RuntimeException("No registered Executor found for type " + this.getType());
         }
-        String data = Utils.replace(this.data, Map.of("player", player.getName()));
+        String data = Utils.replace(this.value, Map.of("player", player.getName()));
         executor.execute(player, data);
     }
 }

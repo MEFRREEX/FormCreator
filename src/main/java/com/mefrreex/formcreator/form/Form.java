@@ -1,19 +1,20 @@
 package com.mefrreex.formcreator.form;
 
+import cn.nukkit.Player;
+import cn.nukkit.Server;
+import cn.nukkit.command.CommandMap;
+import com.mefrreex.formcreator.event.FormSendEvent;
 import com.mefrreex.formcreator.form.action.Action;
 import com.mefrreex.formcreator.form.command.ExecutableCommand;
 import com.mefrreex.formcreator.form.command.FormCommand;
 import com.mefrreex.formcreator.form.element.Button;
-
-import cn.nukkit.Player;
-import cn.nukkit.Server;
-import cn.nukkit.command.CommandMap;
-
+import ru.contentforge.formconstructor.form.SimpleForm;
+import ru.contentforge.formconstructor.form.element.ImageType;
+import ru.contentforge.formconstructor.form.handler.SimpleFormHandler;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import ru.contentforge.formconstructor.form.SimpleForm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.List;
 public class Form {
     
     @SerializedName("command") private FormCommand command;
+    private transient ExecutableCommand executableCommand;
 
     @SerializedName("title") private String title = "";
     @SerializedName("content") private List<String> content = new ArrayList<>();
@@ -39,6 +41,9 @@ public class Form {
         this.title = title; 
     }
 
+    /**
+     * Initialize the form
+     */
     public void init() {
         if (command != null && command.isEnable()) {
             this.registerCommand();
@@ -47,31 +52,50 @@ public class Form {
 
     private void registerCommand() {
         CommandMap map = Server.getInstance().getCommandMap();
-        map.register("FormCreator", new ExecutableCommand(command, this));
+        this.executableCommand = new ExecutableCommand(command, this);
+        map.register("FormCreator", executableCommand);
     }
 
 
+    /**
+     * Add form content
+     */
     public Form addContent(String line) {
         content.add(line);
         return this;
     }
 
+    /**
+     * Add form button
+     * @param button Button
+     */
     public Form addButton(Button button) {
         buttons.add(button);
         return this;
     }
 
+    /**
+     * Add an action to open the form
+     */
     public Form addOpenAction(Action action) {
         openActions.add(action);
         return this;
     }
 
+    /**
+     * Add an action to close the form
+     */
     public Form addCloseAction(Action action) {
         closeActions.add(action);
         return this;
     }
 
-    public SimpleForm buildForm(Player player) {
+    /**
+     * Create a form in FormConstructor
+     * @param player Player
+     * @return SimpleForm
+     */
+    public SimpleForm build(Player player) {
         SimpleForm form = new SimpleForm(title);
         
         openActions.forEach(action -> {
@@ -83,11 +107,20 @@ public class Form {
         }
 
         for (Button button : buttons) {
-            form.addButton(button.getName(), (pl, b) -> {
+            SimpleFormHandler handler  = (pl, b) -> {
                 button.getActions().forEach(action -> {
                     action.execute(pl);
                 });
-            });
+            };
+            
+            ImageType imageType = button.getImageType();
+            String image = button.getImage();
+
+            if (imageType != null && image != null) {
+                form.addButton(button.getName(), imageType, image, handler);
+            } else {
+                form.addButton(button.getName(), handler);
+            }
         }
 
         form.setNoneHandler(pl -> {
@@ -99,7 +132,18 @@ public class Form {
         return form;
     }
 
+    /**
+     * Send form to player
+     * @param player Player 
+     */
     public void send(Player player) {
-        this.buildForm(player).send(player);
+        FormSendEvent event = new FormSendEvent(this, player);
+        Server.getInstance().getPluginManager().callEvent(event);
+            
+        if (event.isCancelled()) {
+            return;
+        }
+
+        this.build(player).send(player);
     }
 }

@@ -6,8 +6,8 @@ public class MessageExecutor implements Executor {
 
     private final boolean isToPlayer;
 
-    public MessageExecutor(boolean isPlayer) {
-        this.isToPlayer = isPlayer;
+    public MessageExecutor(boolean isToPlayer) {
+        this.isToPlayer = isToPlayer;
     }
 
     @Override

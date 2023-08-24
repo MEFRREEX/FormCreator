@@ -4,5 +4,5 @@ import cn.nukkit.Player;
 
 public interface Executor {
     
-    public void execute(Player player, String data);
+    public void execute(Player player, String value);
 }

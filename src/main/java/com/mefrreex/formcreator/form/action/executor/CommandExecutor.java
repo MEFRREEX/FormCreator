@@ -12,12 +12,12 @@ public class CommandExecutor implements Executor {
     }
 
     @Override
+    @SuppressWarnings("all")
     public void execute(Player player, String command) {
         if (isPlayer) {
             Server.getInstance().dispatchCommand(player, command);
         } else {
             Server.getInstance().dispatchCommand(Server.getInstance().getConsoleSender(), command);
         }
-    }
-    
+    }   
 }

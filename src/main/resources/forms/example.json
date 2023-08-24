@@ -21,6 +21,9 @@
     "buttons": [
         {
             "name": "Button",
+            // Buttom image
+            "image": "textures/blocks/diamond_block",
+            "imageType": "path",
             // Button actions
             "actions": [
                 {
@@ -31,7 +34,16 @@
                     // PLAYER_MESSAGE - Send message from player
                     // OPEN - Open other form
                     "type": "OPEN",   // Type
-                    "data": "example" // Action data
+                    "value": "example" // Action value
+                }
+            ]
+        },
+        {
+            "name": "Button 2",
+            "actions": [
+                {
+                    "type": "PLAYER_COMMAND",
+                    "value": "say Test"
                 }
             ]
         }
@@ -40,14 +52,14 @@
     "openActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "data": "say {player} Form opened!"
+            "value": "say {player} Form opened!"
         }
     ],
     // Form close actions
     "closeActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "data": "say {player} Form closed!"
+            "value": "say {player} Form closed!"
         }
     ]
 }

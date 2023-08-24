@@ -1,10 +1,10 @@
 package com.mefrreex.formcreator.form.action;
 
-public class Type {
+public interface Type {
 
-    public static final String PLAYER_COMMAND = "PLAYER_COMMAND";
-    public static final String CONSOLE_COMMAND = "CONSOLE_COMMAND";
-    public static final String MESSAGE = "MESSAGE";
-    public static final String PLAYER_MESSAGE = "PLAYER_MESSAGE";
-    public static final String OPEN = "OPEN";
+    String PLAYER_COMMAND = "PLAYER_COMMAND";
+    String CONSOLE_COMMAND = "CONSOLE_COMMAND";
+    String MESSAGE = "MESSAGE";
+    String PLAYER_MESSAGE = "PLAYER_MESSAGE";
+    String OPEN = "OPEN";
 }

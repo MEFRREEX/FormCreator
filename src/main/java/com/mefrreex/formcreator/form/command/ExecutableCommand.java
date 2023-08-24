@@ -1,10 +1,9 @@
 package com.mefrreex.formcreator.form.command;
 
-import com.mefrreex.formcreator.form.Form;
-
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import com.mefrreex.formcreator.form.Form;
 
 public class ExecutableCommand extends Command {
 
@@ -27,5 +26,4 @@ public class ExecutableCommand extends Command {
         }
         return true;
     }
-    
 }

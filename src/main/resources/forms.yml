@@ -1,2 +1,4 @@
+# Registration of the form
 forms:
+  #form name: "form path in the 'forms' folder"
   example: "example.json"

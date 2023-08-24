@@ -1,0 +1,5 @@
+command-player-not-found: "Player not found!"
+command-help-available: "Available subcommands:"
+command-help-format: "- /[0] [1] - [2]"
+
+command-open-opened: "You opened form [0] to player [1]."
