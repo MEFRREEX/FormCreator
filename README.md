@@ -1,6 +1,11 @@
 # FormCreator
 Tool for easy creation of forms in Json file for Nukkit
 
+## Dependencies
+> FormConstructor
+> 
+> GitHub: https://github.com/ContentForge/FormConstructor/releases/tag/1.1.3
+
 ## How to use
 Example form:
 
