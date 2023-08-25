@@ -33,7 +33,7 @@ Example form:
             "actions": [
                 {
                     "type": "OPEN",
-                    "data": "example"
+                    "value": "example"
                 }
             ]
         },
@@ -42,7 +42,7 @@ Example form:
             "actions": [
                 {
                     "type": "PLAYER_COMMAND",
-                    "data": "say Test"
+                    "value": "say Test"
                 }
             ]
         }
@@ -50,13 +50,13 @@ Example form:
     "openActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "data": "say {player} Form opened!"
+            "value": "say {player} Form opened!"
         }
     ],
     "closeActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "data": "say {player} Form closed!"
+            "value": "say {player} Form closed!"
         }
     ]
 }
