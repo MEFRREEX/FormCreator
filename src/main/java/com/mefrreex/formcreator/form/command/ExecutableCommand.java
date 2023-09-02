@@ -21,8 +21,8 @@ public class ExecutableCommand extends Command {
         if (!this.testPermission(sender)) {
             return false;
         }
-        if (sender instanceof Player player) {
-            form.send(player);
+        if (sender instanceof Player) {
+            form.send((Player) sender);
         }
         return true;
     }

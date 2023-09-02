@@ -4,6 +4,7 @@ import cn.nukkit.plugin.PluginBase;
 import com.mefrreex.formcreator.command.FormCreatorCommand;
 import com.mefrreex.formcreator.form.FormManager;
 import com.mefrreex.formcreator.form.action.executor.ExecutorManager;
+import com.mefrreex.formcreator.metrics.Metrics;
 import com.mefrreex.formcreator.utils.Language;
 
 import java.io.File;
@@ -19,6 +20,7 @@ public class FormCreator extends PluginBase {
         this.saveDefaultConfig();
         this.saveResource("forms.yml");
         this.setup();
+        this.metrics();
     }
 
     @Override
@@ -39,6 +41,13 @@ public class FormCreator extends PluginBase {
                 // ignore
             }
         }
+    }
+
+    public void metrics() {
+        int pluginId = 19705;
+        Metrics metrics = new Metrics(this, pluginId);
+        metrics.addCustomChart(new Metrics.SimplePie("server_movement", () -> String.valueOf(this.getConfig().getBoolean("PowerNukkiX-movement-server"))));
+        metrics.addCustomChart(new Metrics.SimplePie("nukkit_version", () -> this.getServer().getNukkitVersion()));
     }
 
     /** Instance */

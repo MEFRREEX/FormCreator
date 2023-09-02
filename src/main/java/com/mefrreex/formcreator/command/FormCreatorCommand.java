@@ -22,7 +22,7 @@ public class FormCreatorCommand extends BaseCommand {
         if (!this.testPermission(sender)) {
             return false;
         }
-        if (sender instanceof Player player) {
+        if (sender instanceof Player) {
             this.sendUsage(sender, "/%s help".formatted(label));
         }
         return true;
