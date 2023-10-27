@@ -5,6 +5,7 @@ import cn.nukkit.Server;
 import cn.nukkit.command.CommandSender;
 import com.mefrreex.formcreator.command.BaseCommand;
 import com.mefrreex.formcreator.command.BaseSubCommand;
+import com.mefrreex.formcreator.form.Form;
 import com.mefrreex.formcreator.form.FormManager;
 import com.mefrreex.formcreator.utils.Language;
 
@@ -26,14 +27,19 @@ public class OpenSubCommand extends BaseSubCommand {
             return false;
         }
 
+        Form form = FormManager.get(args[0]);
+        if (form == null) {
+            sender.sendMessage(Language.get("command-form-not-found", args[0]));
+            return false;
+        }
+
         Player player = Server.getInstance().getPlayer(args[1]);
-        
         if (player == null) {
-            sender.sendMessage(Language.get("command-player-not-found", args[0]));
+            sender.sendMessage(Language.get("command-player-not-found", args[1]));
             return false; 
         }
-        
-        FormManager.get(args[0]).send(player);
+
+        form.send(player);
         sender.sendMessage(Language.get("command-open-opened", args[0], player.getName()));
         return true;
     } 

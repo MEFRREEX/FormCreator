@@ -1,6 +1,6 @@
 package com.mefrreex.formcreator.form.action.executor;
 
-import com.mefrreex.formcreator.form.action.Type;
+import com.mefrreex.formcreator.form.action.ActionType;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -12,11 +12,11 @@ public class ExecutorManager {
     private static final Map<String, Executor> executors = new HashMap<>();
 
     public static void init() {
-        register(Type.PLAYER_COMMAND, new CommandExecutor(true));
-        register(Type.CONSOLE_COMMAND, new CommandExecutor(false));
-        register(Type.MESSAGE, new MessageExecutor(true));
-        register(Type.PLAYER_MESSAGE, new MessageExecutor(false));
-        register(Type.OPEN, new OpenExecutor());
+        register(ActionType.PLAYER_COMMAND, new CommandExecutor(true));
+        register(ActionType.CONSOLE_COMMAND, new CommandExecutor(false));
+        register(ActionType.MESSAGE, new MessageExecutor(true));
+        register(ActionType.PLAYER_MESSAGE, new MessageExecutor(false));
+        register(ActionType.OPEN, new OpenExecutor());
     }
 
     public static void register(String type, Executor executor) {

@@ -5,7 +5,7 @@ import cn.nukkit.Server;
 import cn.nukkit.command.CommandMap;
 import com.mefrreex.formcreator.event.FormSendEvent;
 import com.mefrreex.formcreator.form.action.Action;
-import com.mefrreex.formcreator.form.command.ExecutableCommand;
+import com.mefrreex.formcreator.form.command.FormCommandExecutor;
 import com.mefrreex.formcreator.form.command.FormCommand;
 import com.mefrreex.formcreator.form.element.Button;
 import ru.contentforge.formconstructor.form.SimpleForm;
@@ -24,7 +24,7 @@ import java.util.List;
 public class Form {
     
     @SerializedName("command") private FormCommand command;
-    private transient ExecutableCommand executableCommand;
+    private transient FormCommandExecutor executableCommand;
 
     @SerializedName("title") private String title = "";
     @SerializedName("content") private List<String> content = new ArrayList<>();
@@ -52,7 +52,7 @@ public class Form {
 
     private void registerCommand() {
         CommandMap map = Server.getInstance().getCommandMap();
-        this.executableCommand = new ExecutableCommand(command, this);
+        this.executableCommand = new FormCommandExecutor(command, this);
         map.register("FormCreator", executableCommand);
     }
 

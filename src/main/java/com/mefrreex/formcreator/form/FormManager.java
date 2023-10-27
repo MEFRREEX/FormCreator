@@ -9,8 +9,9 @@ import com.mefrreex.formcreator.FormCreator;
 import com.mefrreex.formcreator.event.FormLoadEvent;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,7 +53,7 @@ public class FormManager {
      */
     public synchronized static void load(String name, File file) {
         try {
-            Form form = gson.fromJson(new FileReader(file), Form.class);
+            Form form = gson.fromJson(new FileReader(file, Charset.forName("UTF-8")), Form.class);
 
             FormLoadEvent event = new FormLoadEvent(form);
             Server.getInstance().getPluginManager().callEvent(event);
@@ -63,7 +64,7 @@ public class FormManager {
 
             form.init();
             forms.put(name, form);
-        } catch(JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+        } catch(IOException | JsonSyntaxException | JsonIOException e) {
             throw new RuntimeException("Failed to load the form " + file.getName(), e);
         }
     }

@@ -1,4 +1,5 @@
-command-player-not-found: "Player not found!"
+command-player-not-found: "Player with name [0] not found!"
+command-form-not-found: "Form with name [0] not found!"
 command-help-available: "Available subcommands:"
 command-help-format: "- /[0] [1] - [2]"
 
