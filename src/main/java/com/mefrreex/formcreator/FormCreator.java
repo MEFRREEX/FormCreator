@@ -1,6 +1,8 @@
 package com.mefrreex.formcreator;
 
 import cn.nukkit.plugin.PluginBase;
+
+import com.creeperface.nukkit.placeholderapi.api.PlaceholderAPI;
 import com.mefrreex.formcreator.command.FormCreatorCommand;
 import com.mefrreex.formcreator.form.FormManager;
 import com.mefrreex.formcreator.form.action.executor.ExecutorManager;
@@ -13,6 +15,8 @@ import java.io.IOException;
 public class FormCreator extends PluginBase {
     
     private static FormCreator instance;
+
+    private static PlaceholderAPI placeholderApi;
 
     @Override
     public void onLoad() {
@@ -29,6 +33,7 @@ public class FormCreator extends PluginBase {
         ExecutorManager.init();
         FormManager.loadAll();
         FormCreatorCommand.register();
+        this.loadPlaceholders();
     }
 
     private void setup() {
@@ -43,6 +48,12 @@ public class FormCreator extends PluginBase {
         }
     }
 
+    private void loadPlaceholders() {
+        if (this.getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            placeholderApi = PlaceholderAPI.getInstance();
+        }
+    }
+
     public void metrics() {
         int pluginId = 19705;
         Metrics metrics = new Metrics(this, pluginId);
@@ -53,5 +64,9 @@ public class FormCreator extends PluginBase {
     /** Instance */
     public static FormCreator get() {
         return instance;
+    }
+
+    public static PlaceholderAPI getPlaceholderAPI() {
+        return placeholderApi;
     }
 }

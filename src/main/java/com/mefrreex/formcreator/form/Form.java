@@ -8,6 +8,8 @@ import com.mefrreex.formcreator.form.action.Action;
 import com.mefrreex.formcreator.form.command.FormCommandExecutor;
 import com.mefrreex.formcreator.form.command.FormCommand;
 import com.mefrreex.formcreator.form.element.Button;
+import com.mefrreex.formcreator.utils.Format;
+
 import ru.contentforge.formconstructor.form.SimpleForm;
 import ru.contentforge.formconstructor.form.element.ImageType;
 import ru.contentforge.formconstructor.form.handler.SimpleFormHandler;
@@ -96,14 +98,14 @@ public class Form {
      * @return SimpleForm
      */
     public SimpleForm build(Player player) {
-        SimpleForm form = new SimpleForm(title);
+        SimpleForm form = new SimpleForm(Format.format(title, player));
         
         openActions.forEach(action -> {
             action.execute(player);
         });
 
         for (String line : content) {
-            form.addContent(line);
+            form.addContent(Format.format(line, player));
         }
 
         for (Button button : buttons) {
@@ -116,10 +118,11 @@ public class Form {
             ImageType imageType = button.getImageType();
             String image = button.getImage();
 
+            String name = Format.format(button.getName(), player);
             if (imageType != null && image != null) {
-                form.addButton(button.getName(), imageType, image, handler);
+                form.addButton(name, imageType, image, handler);
             } else {
-                form.addButton(button.getName(), handler);
+                form.addButton(name, handler);
             }
         }
 

@@ -3,6 +3,9 @@ version: "${project.version}"
 api: ["1.0.13"]
 main: com.mefrreex.formcreator.FormCreator
 
+softdepend:
+  - "PlaceholderAPI"
+
 depend:
   - "FormConstructor"
 

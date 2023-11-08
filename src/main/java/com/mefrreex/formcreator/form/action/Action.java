@@ -4,15 +4,11 @@ import cn.nukkit.Player;
 import com.google.gson.annotations.SerializedName;
 import com.mefrreex.formcreator.form.action.executor.Executor;
 import com.mefrreex.formcreator.form.action.executor.ExecutorManager;
-import com.mefrreex.formcreator.utils.Utils;
+import com.mefrreex.formcreator.utils.Format;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 
-import java.util.Map;
-
-@Getter @Setter
-@ToString
+@Getter @ToString
 public class Action {
     
     @SerializedName("type") private String type;
@@ -32,7 +28,7 @@ public class Action {
         if (executor == null) {
             throw new RuntimeException("No registered Executor found for type " + this.getType());
         }
-        String data = Utils.replace(this.value, Map.of("player", player.getName()));
+        String data = Format.format(value, player);
         executor.execute(player, data);
     }
 }
