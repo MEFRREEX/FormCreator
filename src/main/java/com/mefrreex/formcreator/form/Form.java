@@ -9,7 +9,6 @@ import com.mefrreex.formcreator.form.command.FormCommandExecutor;
 import com.mefrreex.formcreator.form.command.FormCommand;
 import com.mefrreex.formcreator.form.element.Button;
 import com.mefrreex.formcreator.utils.Format;
-
 import ru.contentforge.formconstructor.form.SimpleForm;
 import ru.contentforge.formconstructor.form.element.ImageType;
 import ru.contentforge.formconstructor.form.handler.SimpleFormHandler;

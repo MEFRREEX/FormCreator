@@ -5,6 +5,7 @@ main: com.mefrreex.formcreator.FormCreator
 
 softdepend:
   - "PlaceholderAPI"
+  - "ChestCreator"
 
 depend:
   - "FormConstructor"

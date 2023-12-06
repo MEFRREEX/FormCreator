@@ -17,6 +17,7 @@ public class ExecutorManager {
         register(ActionType.MESSAGE, new MessageExecutor(true));
         register(ActionType.PLAYER_MESSAGE, new MessageExecutor(false));
         register(ActionType.OPEN, new OpenExecutor());
+        register(ActionType.OPEN_CHEST, new OpenChestExecutor());
     }
 
     public static void register(String type, Executor executor) {

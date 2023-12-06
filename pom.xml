@@ -42,6 +42,13 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+	        <groupId>com.mefrreex.chestcreator</groupId>
+	        <artifactId>FormConstructor</artifactId>
+	        <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/ChestCreator-1.0.jar</systemPath>
+	    </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>

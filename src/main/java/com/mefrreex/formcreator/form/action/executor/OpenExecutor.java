@@ -1,8 +1,7 @@
 package com.mefrreex.formcreator.form.action.executor;
 
-import com.mefrreex.formcreator.form.FormManager;
-
 import cn.nukkit.Player;
+import com.mefrreex.formcreator.form.FormManager;
 
 public class OpenExecutor implements Executor {
 

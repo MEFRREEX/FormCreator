@@ -7,4 +7,5 @@ public interface ActionType {
     String MESSAGE = "MESSAGE";
     String PLAYER_MESSAGE = "PLAYER_MESSAGE";
     String OPEN = "OPEN";
+    String OPEN_CHEST = "OPEN_CHEST";
 }
