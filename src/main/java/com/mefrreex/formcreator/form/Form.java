@@ -99,10 +99,6 @@ public class Form {
      */
     public SimpleForm build(Player player) {
         SimpleForm form = new SimpleForm(Format.format(title, player));
-        
-        openActions.forEach(action -> {
-            action.execute(player);
-        });
 
         for (String line : content) {
             form.addContent(Format.format(line, player));
@@ -146,6 +142,10 @@ public class Form {
         if (event.isCancelled()) {
             return;
         }
+
+        openActions.forEach(action -> {
+            action.execute(player);
+        });
 
         this.build(player).send(player);
     }
