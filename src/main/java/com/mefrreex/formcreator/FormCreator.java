@@ -1,11 +1,11 @@
 package com.mefrreex.formcreator;
 
 import cn.nukkit.plugin.PluginBase;
-
 import com.creeperface.nukkit.placeholderapi.api.PlaceholderAPI;
 import com.mefrreex.formcreator.command.FormCreatorCommand;
 import com.mefrreex.formcreator.form.FormManager;
 import com.mefrreex.formcreator.form.action.executor.ExecutorManager;
+import com.mefrreex.formcreator.form.adapter.FormAdapterManager;
 import com.mefrreex.formcreator.metrics.Metrics;
 import com.mefrreex.formcreator.utils.Language;
 
@@ -31,6 +31,7 @@ public class FormCreator extends PluginBase {
     public void onEnable() {
         Language.init(this);
         ExecutorManager.init();
+        FormAdapterManager.init(this);
         FormManager.loadAll();
         FormCreatorCommand.register();
         this.loadPlaceholders();
