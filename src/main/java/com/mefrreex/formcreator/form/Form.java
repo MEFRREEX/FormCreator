@@ -5,13 +5,15 @@ import cn.nukkit.Server;
 import cn.nukkit.command.CommandMap;
 import com.mefrreex.formcreator.event.FormSendEvent;
 import com.mefrreex.formcreator.form.action.Action;
+import com.mefrreex.formcreator.form.adapter.FormAdapterManager;
+import com.mefrreex.formcreator.form.adapter.IFormAdapter;
+import com.mefrreex.formcreator.form.adapter.IFormAdapterFactory;
+import com.mefrreex.formcreator.form.adapter.ImageTypeAdapter;
+import com.mefrreex.formcreator.form.adapter.handler.ButtonHandler;
 import com.mefrreex.formcreator.form.command.FormCommandExecutor;
 import com.mefrreex.formcreator.form.command.FormCommand;
 import com.mefrreex.formcreator.form.element.Button;
 import com.mefrreex.formcreator.utils.Format;
-import ru.contentforge.formconstructor.form.SimpleForm;
-import ru.contentforge.formconstructor.form.element.ImageType;
-import ru.contentforge.formconstructor.form.handler.SimpleFormHandler;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,6 +35,8 @@ public class Form {
 
     @SerializedName("openActions") private List<Action> openActions = new ArrayList<>();
     @SerializedName("closeActions") private List<Action> closeActions = new ArrayList<>();
+
+    private static final IFormAdapterFactory formFactory = FormAdapterManager.getFactory();
 
     public Form() {
         this("");
@@ -96,32 +100,32 @@ public class Form {
      * @param player Player
      * @return SimpleForm
      */
-    public SimpleForm build(Player player) {
-        SimpleForm form = new SimpleForm(Format.format(title, player));
+    public IFormAdapter<?> build(Player player) {
+        IFormAdapter<?> form = formFactory.createForm(title);
 
         for (String line : content) {
             form.addContent(Format.format(line, player));
         }
 
         for (Button button : buttons) {
-            SimpleFormHandler handler  = (pl, b) -> {
+            ButtonHandler handler  = (pl) -> {
                 button.getActions().forEach(action -> {
                     action.execute(pl);
                 });
             };
             
-            ImageType imageType = button.getImageType();
-            String image = button.getImage();
+            ImageTypeAdapter imageType = button.getImageType();
+            String imagePath = button.getImage();
 
             String name = Format.format(button.getName(), player);
-            if (imageType != null && image != null) {
-                form.addButton(name, imageType, image, handler);
+            if (imageType != null && imagePath != null) {
+                form.addButton(formFactory.createButton(name, imageType, imagePath, handler));
             } else {
-                form.addButton(name, handler);
+                form.addButton(formFactory.createButton(name, ImageTypeAdapter.PATH, "", handler));
             }
         }
 
-        form.setNoneHandler(pl -> {
+        form.setCloseHandler(pl -> {
             closeActions.forEach(action -> {
                 action.execute(player);
             });
