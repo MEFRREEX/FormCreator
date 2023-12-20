@@ -4,7 +4,7 @@ Tool for easy creation of forms in Json file for Nukkit
 ## Dependencies
 > [!note]
 > This plugin is dependent on the FormConstructor plugin     
-> GitHub: https://github.com/ContentForge/FormConstructor/releases/tag/2.0.0
+> GitHub: https://github.com/MEFRREEX/FormConstructor/releases/tag/2.0.0
 
 ## How to use
 Example form:
