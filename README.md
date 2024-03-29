@@ -32,7 +32,7 @@ Example form:
             "imageType": "path",
             "actions": [
                 {
-                    "type": "OPEN",
+                    "type": "OPEN_FORM",
                     "value": "example"
                 }
             ]
@@ -117,7 +117,7 @@ public class YourExecutor implements Executor {
 Executor registration:
 ```java
 // name - Executor name. For example: YOUR_EXECUTOR 
-ExecutorManager.register("name", new YourExecutor());
+ExecutorManager.register("YOUR_EXECUTOR", new YourExecutor());
 ```
 Getting a executor:
 ```java

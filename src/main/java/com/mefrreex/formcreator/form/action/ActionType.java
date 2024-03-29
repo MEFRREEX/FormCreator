@@ -10,7 +10,10 @@ public interface ActionType {
 
     String PLAYER_MESSAGE = "PLAYER_MESSAGE";
 
+    @Deprecated
     String OPEN = "OPEN";
-    
+
+    String OPEN_FORM = "OPEN_FORM";
+
     String OPEN_CHEST = "OPEN_CHEST";
 }

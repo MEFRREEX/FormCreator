@@ -32,8 +32,9 @@
                     // CONSOLE_COMMAND  - Execute command from server
                     // MESSAGE - Send message to player
                     // PLAYER_MESSAGE - Send message from player
-                    // OPEN - Open other form
-                    "type": "OPEN",   // Type
+                    // OPEN_FORM - Open other form
+                    // OPEN_CHEST - Open chest from ChestCreator
+                    "type": "OPEN_FORM",   // Type
                     "value": "example" // Action value
                 }
             ]

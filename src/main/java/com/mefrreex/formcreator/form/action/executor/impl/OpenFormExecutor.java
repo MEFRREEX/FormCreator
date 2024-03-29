@@ -4,7 +4,7 @@ import cn.nukkit.Player;
 import com.mefrreex.formcreator.form.FormManager;
 import com.mefrreex.formcreator.form.action.executor.Executor;
 
-public class OpenExecutor implements Executor {
+public class OpenFormExecutor implements Executor {
 
     @Override
     public void execute(Player player, String name) {
