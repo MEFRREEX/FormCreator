@@ -1,6 +1,10 @@
 package com.mefrreex.formcreator.form.action.executor;
 
 import com.mefrreex.formcreator.form.action.ActionType;
+import com.mefrreex.formcreator.form.action.executor.impl.CommandExecutor;
+import com.mefrreex.formcreator.form.action.executor.impl.MessageExecutor;
+import com.mefrreex.formcreator.form.action.executor.impl.OpenChestExecutor;
+import com.mefrreex.formcreator.form.action.executor.impl.OpenExecutor;
 import lombok.Getter;
 
 import java.util.HashMap;

@@ -1,7 +1,8 @@
-package com.mefrreex.formcreator.form.action.executor;
+package com.mefrreex.formcreator.form.action.executor.impl;
 
 import cn.nukkit.Player;
 import com.mefrreex.chestcreator.chest.ChestManager;
+import com.mefrreex.formcreator.form.action.executor.Executor;
 
 public class OpenChestExecutor implements Executor {
 
