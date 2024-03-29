@@ -94,14 +94,14 @@ public class Form {
      * @return SimpleForm
      */
     public IFormAdapter<?> build(Player player) {
-        IFormAdapter<?> form = formFactory.createForm(title);
+        IFormAdapter<?> form = formFactory.createForm(Format.format(title, player));
 
         for (String line : content) {
             form.addContent(Format.format(line, player));
         }
 
         for (Button button : buttons) {
-            ButtonHandler handler = (pl) -> {
+            ButtonHandler handler  = (pl) -> {
                 button.getActions().forEach(action -> {
                     action.execute(pl);
                 });
