@@ -2,11 +2,12 @@ package com.mefrreex.formcreator.form;
 
 import cn.nukkit.Server;
 import cn.nukkit.utils.Config;
+import com.mefrreex.formcreator.FormCreator;
+import com.mefrreex.formcreator.event.FormLoadEvent;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
-import com.mefrreex.formcreator.FormCreator;
-import com.mefrreex.formcreator.event.FormLoadEvent;
+import lombok.Getter;
 
 import java.io.File;
 import java.io.FileReader;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 public class FormManager {
     
+    @Getter
     private static final Map<String, Form> forms = new HashMap<>();
 
     private static final Gson gson = new Gson();
