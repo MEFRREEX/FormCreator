@@ -50,13 +50,13 @@ Example form:
     "openActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "value": "say {player} Form opened!"
+            "value": "say %player% Form opened!"
         }
     ],
     "closeActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "value": "say {player} Form closed!"
+            "value": "say %player% Form closed!"
         }
     ]
 }

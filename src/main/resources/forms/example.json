@@ -53,14 +53,14 @@
     "openActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "value": "say {player} Form opened!"
+            "value": "say %player% Form opened!"
         }
     ],
     // Form close actions
     "closeActions": [
         {
             "type": "CONSOLE_COMMAND",
-            "value": "say {player} Form closed!"
+            "value": "say %player% Form closed!"
         }
     ]
 }
