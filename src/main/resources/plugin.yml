@@ -1,6 +1,6 @@
 name: "${project.name}"
 version: "${project.version}"
-api: ["1.0.13"]
+api: ["2.0.0"]
 main: com.mefrreex.formcreator.FormCreator
 
 softdepend:

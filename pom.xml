@@ -24,9 +24,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.powernukkitx</groupId>
-            <artifactId>powernukkitx</artifactId>
-            <version>1.19.60-r1</version>
+            <groupId>com.github.PowerNukkitX</groupId>
+            <artifactId>PowerNukkitX</artifactId>
+            <version>master-SNAPSHOT</version>
         </dependency>
         <dependency>
 	        <groupId>ru.contentforge</groupId>
