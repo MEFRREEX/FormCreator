@@ -2,7 +2,7 @@ package com.mefrreex.formcreator.form.adapter.v1;
 
 import com.mefrreex.formcreator.form.adapter.IButtonAdapter;
 import com.mefrreex.formcreator.form.adapter.IFormAdapter;
-import com.mefrreex.formcreator.form.adapter.handler.NoneHandler;
+import com.mefrreex.formcreator.form.adapter.handler.CloseHandler;
 import ru.contentforge.formconstructor.form.SimpleForm;
 import ru.contentforge.formconstructor.form.element.Button;
 import ru.contentforge.formconstructor.form.element.ImageType;
@@ -25,7 +25,7 @@ public class FormV1Adapter extends SimpleForm implements IFormAdapter<SimpleForm
     }
 
     @Override
-    public SimpleForm setCloseHandler(NoneHandler handler) {
+    public SimpleForm setCloseHandler(CloseHandler handler) {
         this.setNoneHandler(pl -> handler.handle(pl));
         return this;
     }

@@ -12,5 +12,4 @@ public class OpenExecutor implements Executor {
         }
         FormManager.get(name).send(player);
     }
-    
 }

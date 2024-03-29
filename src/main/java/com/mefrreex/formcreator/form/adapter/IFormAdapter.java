@@ -1,14 +1,17 @@
 package com.mefrreex.formcreator.form.adapter;
 
-import com.mefrreex.formcreator.form.adapter.handler.NoneHandler;
-
 import cn.nukkit.Player;
+import com.mefrreex.formcreator.form.adapter.handler.CloseHandler;
 
 public interface IFormAdapter<T> {
     
     T setTitle(String title);
+
     T addContent(String addition);
+
     T addButton(IButtonAdapter<?> button);
-    T setCloseHandler(NoneHandler handler);
+
+    T setCloseHandler(CloseHandler handler);
+
     void send(Player player);
 }

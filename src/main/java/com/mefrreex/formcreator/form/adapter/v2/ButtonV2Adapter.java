@@ -4,7 +4,6 @@ import com.formconstructor.form.element.simple.Button;
 import com.mefrreex.formcreator.form.adapter.IButtonAdapter;
 import com.mefrreex.formcreator.form.adapter.ImageTypeAdapter;
 import com.mefrreex.formcreator.form.adapter.handler.ButtonHandler;
-
 import lombok.Setter;
 
 @Setter

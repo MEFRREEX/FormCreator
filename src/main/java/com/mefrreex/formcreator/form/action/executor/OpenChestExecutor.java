@@ -16,5 +16,4 @@ public class OpenChestExecutor implements Executor {
             throw new RuntimeException("ChestCreator plugin not found", e);
         }
     }
-    
 }

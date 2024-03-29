@@ -18,5 +18,4 @@ public class MessageExecutor implements Executor {
             player.chat(message);
         }
     }
-    
 }

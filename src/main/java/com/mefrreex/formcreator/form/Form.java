@@ -2,7 +2,6 @@ package com.mefrreex.formcreator.form;
 
 import cn.nukkit.Player;
 import cn.nukkit.Server;
-import cn.nukkit.command.CommandMap;
 import com.mefrreex.formcreator.event.FormSendEvent;
 import com.mefrreex.formcreator.form.action.Action;
 import com.mefrreex.formcreator.form.adapter.FormAdapterManager;
@@ -14,7 +13,6 @@ import com.mefrreex.formcreator.form.command.FormCommandExecutor;
 import com.mefrreex.formcreator.form.command.FormCommand;
 import com.mefrreex.formcreator.form.element.Button;
 import com.mefrreex.formcreator.utils.Format;
-import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -22,19 +20,20 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter
+@Getter 
+@Setter
 @ToString
 public class Form {
     
-    @SerializedName("command") private FormCommand command;
+    private FormCommand command;
     private transient FormCommandExecutor executableCommand;
 
-    @SerializedName("title") private String title = "";
-    @SerializedName("content") private List<String> content = new ArrayList<>();
-    @SerializedName("buttons") private List<Button> buttons = new ArrayList<>();
+    private String title = "";
+    private List<String> content = new ArrayList<>();
+    private List<Button> buttons = new ArrayList<>();
 
-    @SerializedName("openActions") private List<Action> openActions = new ArrayList<>();
-    @SerializedName("closeActions") private List<Action> closeActions = new ArrayList<>();
+    private List<Action> openActions = new ArrayList<>();
+    private List<Action> closeActions = new ArrayList<>();
 
     private static final IFormAdapterFactory formFactory = FormAdapterManager.getFactory();
 
@@ -50,17 +49,11 @@ public class Form {
      * Initialize the form
      */
     public void init() {
-        if (command != null && command.isEnable()) {
-            this.registerCommand();
+        if (this.command != null && command.isEnable()) {
+            this.executableCommand = new FormCommandExecutor(command, this);
+            Server.getInstance().getCommandMap().register("FormCreator", executableCommand);
         }
     }
-
-    private void registerCommand() {
-        CommandMap map = Server.getInstance().getCommandMap();
-        this.executableCommand = new FormCommandExecutor(command, this);
-        map.register("FormCreator", executableCommand);
-    }
-
 
     /**
      * Add form content
@@ -108,7 +101,7 @@ public class Form {
         }
 
         for (Button button : buttons) {
-            ButtonHandler handler  = (pl) -> {
+            ButtonHandler handler = (pl) -> {
                 button.getActions().forEach(action -> {
                     action.execute(pl);
                 });

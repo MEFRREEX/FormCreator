@@ -2,9 +2,8 @@ package com.mefrreex.formcreator.event;
 
 import cn.nukkit.Player;
 import cn.nukkit.event.HandlerList;
-import lombok.Getter;
-
 import com.mefrreex.formcreator.form.Form;
+import lombok.Getter;
 
 @Getter
 public class FormSendEvent extends FormEvent {

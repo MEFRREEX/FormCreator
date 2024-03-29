@@ -16,8 +16,9 @@ public class FormAdapterManager {
 
     public static void init(FormCreator main) {
         Plugin formConstructor = main.getServer().getPluginManager().getPlugin("FormConstructor");
+
         if (formConstructor == null) {
-            return;
+            throw new RuntimeException("Plugin FormConstructor not found");
         }
 
         VersionEntry version = VersionUtils.fromString(formConstructor.getDescription().getVersion());

@@ -5,7 +5,7 @@
 
     <groupId>com.mefrreex.formcreator</groupId>
     <artifactId>formcreator</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <name>FormCreator</name>
 
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>com.github.MEFRREEX</groupId>
             <artifactId>FormConstructor</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.2</version>
         </dependency>
         <dependency>
             <groupId>com.creeperface.nukkit.placeholderapi</groupId>
