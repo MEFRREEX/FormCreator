@@ -21,8 +21,8 @@ public class ExecutorManager {
         register(ActionType.CONSOLE_COMMAND, new CommandExecutor(false));
         register(ActionType.MESSAGE, new MessageExecutor(true));
         register(ActionType.PLAYER_MESSAGE, new MessageExecutor(false));
-        register(ActionType.OPEN, new OpenFormExecutor()); // register executor for backward compatibility
-        register(ActionType.OPEN_FORM, new OpenFormExecutor());
+        register(ActionType.OPEN, new OpenFormExecutor(true)); // register executor for backward compatibility
+        register(ActionType.OPEN_FORM, new OpenFormExecutor(false));
         register(ActionType.OPEN_CHEST, new OpenChestExecutor());
     }
 
