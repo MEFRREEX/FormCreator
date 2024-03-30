@@ -6,6 +6,8 @@ public interface ActionType {
 
     String CONSOLE_COMMAND = "CONSOLE_COMMAND";
 
+    String OPERATOR_COMMAND = "OPERATOR_COMMAND";
+
     String MESSAGE = "MESSAGE";
 
     String PLAYER_MESSAGE = "PLAYER_MESSAGE";
