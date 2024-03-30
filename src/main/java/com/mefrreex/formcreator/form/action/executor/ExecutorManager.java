@@ -5,6 +5,7 @@ import com.mefrreex.formcreator.form.action.executor.impl.CommandExecutor;
 import com.mefrreex.formcreator.form.action.executor.impl.MessageExecutor;
 import com.mefrreex.formcreator.form.action.executor.impl.OpenChestExecutor;
 import com.mefrreex.formcreator.form.action.executor.impl.OpenFormExecutor;
+import com.mefrreex.formcreator.form.action.executor.impl.CommandExecutor.CommandExecuteType;
 import lombok.Getter;
 
 import java.util.HashMap;
@@ -17,8 +18,9 @@ public class ExecutorManager {
 
     @SuppressWarnings("deprecation")
     public static void init() {
-        register(ActionType.PLAYER_COMMAND, new CommandExecutor(true));
-        register(ActionType.CONSOLE_COMMAND, new CommandExecutor(false));
+        register(ActionType.PLAYER_COMMAND, new CommandExecutor(CommandExecuteType.PLAYER));
+        register(ActionType.CONSOLE_COMMAND, new CommandExecutor(CommandExecuteType.CONSOLE));
+        register(ActionType.OPERATOR_COMMAND, new CommandExecutor(CommandExecuteType.OPERATOR));
         register(ActionType.MESSAGE, new MessageExecutor(true));
         register(ActionType.PLAYER_MESSAGE, new MessageExecutor(false));
         register(ActionType.OPEN, new OpenFormExecutor(true)); // register executor for backward compatibility
