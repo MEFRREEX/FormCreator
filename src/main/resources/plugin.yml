@@ -11,9 +11,11 @@ depend:
   - "FormConstructor"
 
 permissions:
-  formcreator:
+  formcreator.help:
+    default: true
+  formcreator.info:
     default: true
   formcreator.open:
     default: op
-  formcreator.info:
-    default: true
+  formcreator.reload:
+    default: op
