@@ -6,15 +6,17 @@ import cn.nukkit.command.CommandSender;
 import com.mefrreex.formcreator.command.subcommand.HelpSubCommand;
 import com.mefrreex.formcreator.command.subcommand.InfoSubCommand;
 import com.mefrreex.formcreator.command.subcommand.OpenSubCommand;
+import com.mefrreex.formcreator.command.subcommand.ReloadSubCommand;
 
 public class FormCreatorCommand extends BaseCommand {
 
     public FormCreatorCommand() {
         super("formcreator", "FormCreator");
         this.setPermission("formcreator");
-        this.registerSubCommand(new OpenSubCommand(this));
-        this.registerSubCommand(new InfoSubCommand(this));
         this.registerSubCommand(new HelpSubCommand(this));
+        this.registerSubCommand(new InfoSubCommand(this));
+        this.registerSubCommand(new OpenSubCommand(this));
+        this.registerSubCommand(new ReloadSubCommand(this));
     }
 
     @Override

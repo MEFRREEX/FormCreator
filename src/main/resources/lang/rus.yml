@@ -2,5 +2,6 @@ command-player-not-found: "Игрок с именем [0] не найден!"
 command-form-not-found: "Форма с названием [0] не найдена!"
 command-help-available: "Доступные команды:"
 command-help-format: "- /[0] [1] - [2]"
-
 command-open-opened: "Вы открыли форму [0] для игрока [1]."
+command-reload-success: "Все формы перезагружены"
+command-reload-error: "&cПерезагрузка не удалась. Подробности см. в консоли"
