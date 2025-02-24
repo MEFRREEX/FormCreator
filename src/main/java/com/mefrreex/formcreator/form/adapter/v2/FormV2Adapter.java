@@ -24,7 +24,7 @@ public class FormV2Adapter extends SimpleForm implements IFormAdapter<SimpleForm
 
     @Override
     public SimpleForm setCloseHandler(CloseHandler handler) {
-        this.setNoneHandler(pl -> handler.handle(pl));
+        super.setCloseHandler(pl -> handler.handle(pl));
         return this;
     }
 }

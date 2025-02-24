@@ -3,7 +3,6 @@ package com.mefrreex.formcreator.form.action.executor.impl;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.command.ConsoleCommandSender;
-import cn.nukkit.lang.CommandOutputContainer;
 import cn.nukkit.lang.TextContainer;
 import com.mefrreex.formcreator.form.action.executor.Executor;
 import org.jetbrains.annotations.NotNull;
@@ -38,11 +37,6 @@ public class CommandExecutor implements Executor {
 
         @Override
         public void sendMessage(TextContainer message) {
-            
-        }
-
-        @Override
-        public void sendCommandOutput(CommandOutputContainer arg0) {
             
         }
 
