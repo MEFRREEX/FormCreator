@@ -3,6 +3,7 @@ package com.mefrreex.formcreator.form.action.executor.impl;
 import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.command.ConsoleCommandSender;
+import cn.nukkit.event.player.PlayerCommandPreprocessEvent;
 import cn.nukkit.lang.TextContainer;
 import com.mefrreex.formcreator.form.action.executor.Executor;
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +22,13 @@ public class CommandExecutor implements Executor {
     @Override
     @SuppressWarnings("all")
     public void execute(Player player, String command) {
+        PlayerCommandPreprocessEvent event = new PlayerCommandPreprocessEvent(player, "/" + command);
+        if (executeType == CommandExecuteType.PLAYER) {
+            Server.getInstance().getPluginManager().callEvent(event);
+        }
+        if (event.isCancelled()) {
+            return;
+        }
         Server.getInstance().dispatchCommand(switch(executeType) {
             case PLAYER -> player;
             case CONSOLE -> CONSOLE_SENDER;
@@ -46,7 +54,7 @@ public class CommandExecutor implements Executor {
         }
     }
 
-    public static enum CommandExecuteType {
+    public enum CommandExecuteType {
         PLAYER,
         CONSOLE,
         OPERATOR
