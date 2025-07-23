@@ -214,7 +214,7 @@ public class Metrics {
     private JsonObject getServerData() {
         // Minecraft specific data
         int playerAmount = Server.getInstance().getOnlinePlayers().size();
-        int onlineMode = Server.getInstance().getPropertyBoolean("xbox-auth", true) ? 1 : 0;
+        int onlineMode = Server.getInstance().getSettings().network().xboxAuth() ? 1 : 0;
         String softwareVersion = Server.getInstance().getApiVersion() + " (MC: " + Server.getInstance().getVersion().substring(1) + ")";
         String softwareName = Server.getInstance().getName();
 
